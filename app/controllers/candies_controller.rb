@@ -5,4 +5,6 @@ end
 def index
   @candies = Candy.all
 end
+
+
 end
