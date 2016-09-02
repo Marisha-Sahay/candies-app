@@ -1,8 +1,8 @@
 class Api::V1::CandiesController < ApplicationController
 
     def show
-      candy = Candy.find_by(id: params[:id])
-      render json: candy
+      @candy = Candy.find_by(id: params[:id])
+      render json: @candy
     end
     def index
       @candies = Candy.all
@@ -24,6 +24,9 @@ class Api::V1::CandiesController < ApplicationController
       @candy = Candy.find_by(id: params[:id])
       @candy.destroy
       render :show
+    end
+
+    def welcome
     end
 
 end
