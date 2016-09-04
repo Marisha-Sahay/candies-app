@@ -6,6 +6,7 @@ class Api::V1::CandiesController < ApplicationController
     end
     def index
       @candies = Candy.all
+      render json:@candies
     end
 
     def create 

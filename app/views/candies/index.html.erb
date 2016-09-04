@@ -1,0 +1,30 @@
+<div ng-app="app">
+  <div ng-controller="candiesCtrl" ng-init="setup()">
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Expiry</th>
+        <th>Price</th>
+      </tr>
+      <tr ng-repeat="candy in candies">
+        <td>{{candy.id}}</td>>
+        <td>{{candy.name}}</td>
+        <td>{{candy.expiry}}</td>
+        <td>{{candy.price}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div>
+  Name: <input ng-model="newName">
+</div>
+<div>
+  Expiry: <input ng-model="newExpiry">
+</div>
+<div>
+  Price: <input ng-model="newPrice">
+</div>
+<button ng-click="addCandy(newName, newExpiry, newPrice)">Add Candy</button>
+</div>
