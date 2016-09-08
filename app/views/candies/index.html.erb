@@ -1,28 +1,40 @@
 <div ng-app="app">
   <div ng-controller="candiesCtrl" ng-init="setup()">
-    <table>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Expiry</th>
-        <th>Price</th>
-      </tr>
-      <tr ng-repeat="candy in candies">
-        <td>{{candy.id}}</td>>
-        <td>{{candy.name}}</td>
-        <td>{{candy.expiry}}</td>
-        <td>{{candy.price}}</td>
-      </tr>
-    </table>
-
-    <div>
-      Name: <input ng-model="newName">
-    </div>
-    <div>
-      Expiry: <input ng-model="newExpiry">
-    </div>
-    <div>
-      Price: <input ng-model="newPrice">
-    </div>
-    <button ng-click="addCandy(newName, newExpiry, newPrice)">Add Candy</button>
-  </div></div>
+<!--   Name Filter: <input ng-model="filterName">
+  Price Filter: <input ng-model="filterPrice"> -->
+  Filter: <input ng-model="filterCandy">
+  <div>
+    <button ng-click="sortByAttribute('name')">Sort by name</button>
+  </div>
+  <div>
+    <button ng-click="sortByAttribute('price')">Sort by price</button>
+  </div>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Expiry</th>
+      <th>Price</th>
+    </tr>
+    <!-- <tr ng-repeat="candy in candies | filter: {name: filterName, price: filterPrice}"> -->
+    <tr ng-repeat="candy in candies | filter: filterCandy | orderBy:orderAttribute">
+      <td>{{candy.id}}</td>>
+      <td>{{candy.name}}</td>
+      <td>{{candy.expiry}}</td>
+      <td>{{candy.price}}</td>
+    </tr>
+  </table>
+  <div ng-repeat="error in errors">{{error}}</div>
+  <div>
+    Name: <input ng-model="newName">
+  </div>
+  <div>
+    Expiry: <input ng-model="newExpiry">
+  </div>
+  <div>
+    Price: <input ng-model="newPrice">
+  </div>
+  <button ng-click="addCandy(newName, newExpiry, newPrice)">Add Candy</button>
+</div>
+<div> Total number of candies {{candies.length}}</div>
+</div>
