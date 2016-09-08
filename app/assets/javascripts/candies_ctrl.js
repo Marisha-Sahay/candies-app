@@ -26,8 +26,21 @@
       });
     };
 
-    $scope.sortByAttribute = function(attribute) {
-      $scope.orderAttribute = attribute;
+    $scope.deleteCandy = function(candy) {
+      $http.delete("api/v1/candies/" + candy.id + '.json').then(function(response) {
+        var index = $scope.candies.indexOf(candy);
+        $scope.candies.splice(index,1);
+      }, function(error) {
+        $scope.deleteErrors = error.data.errors;
+      });
+    }
+
+    $scope.toggleByAttribute = function(attribute) {
+      if(attribute == $scope.orderAttribute) {
+        $scope.descending = !$scope.descending
+      } else {
+        $scope.orderAttribute = attribute;        
+      }
     }
 
     window.$scope = $scope;

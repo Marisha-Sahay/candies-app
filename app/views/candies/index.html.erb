@@ -3,25 +3,26 @@
 <!--   Name Filter: <input ng-model="filterName">
   Price Filter: <input ng-model="filterPrice"> -->
   Filter: <input ng-model="filterCandy">
-  <div>
-    <button ng-click="sortByAttribute('name')">Sort by name</button>
+<!--   <div>
+    <button ng-click="toggleByAttribute('name')">Sort by name</button>
   </div>
   <div>
-    <button ng-click="sortByAttribute('price')">Sort by price</button>
-  </div>
+    <button ng-click="toggleByAttribute('price')">Sort by price</button>
+  </div> -->
   <table>
     <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Expiry</th>
-      <th>Price</th>
+      <th ng-click="toggleByAttribute('id')">Id</th>
+      <th ng-click="toggleByAttribute('name')">Name</th>
+      <th ng-click="toggleByAttribute('expiry')">Expiry</th>
+      <th ng-click="toggleByAttribute('price')">Price</th>
     </tr>
     <!-- <tr ng-repeat="candy in candies | filter: {name: filterName, price: filterPrice}"> -->
-    <tr ng-repeat="candy in candies | filter: filterCandy | orderBy:orderAttribute">
+    <tr ng-repeat="candy in candies | filter: filterCandy | orderBy:orderAttribute:descending">
       <td>{{candy.id}}</td>>
       <td>{{candy.name}}</td>
       <td>{{candy.expiry}}</td>
       <td>{{candy.price}}</td>
+      <td><button ng-click="deleteCandy(candy)">Delete Candy</button></td>
     </tr>
   </table>
   <div ng-repeat="error in errors">{{error}}</div>
