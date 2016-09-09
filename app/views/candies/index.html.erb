@@ -1,5 +1,6 @@
 <div ng-app="app">
   <div ng-controller="candiesCtrl" ng-init="setup()">
+  <marz-directive></marz-directive>
 <!--   Name Filter: <input ng-model="filterName">
   Price Filter: <input ng-model="filterPrice"> -->
   Filter: <input ng-model="filterCandy">
@@ -18,11 +19,12 @@
     </tr>
     <!-- <tr ng-repeat="candy in candies | filter: {name: filterName, price: filterPrice}"> -->
     <tr ng-repeat="candy in candies | filter: filterCandy | orderBy:orderAttribute:descending">
-      <td>{{candy.id}}</td>>
+      <td>{{candy.id}}</td>
       <td>{{candy.name}}</td>
       <td>{{candy.expiry}}</td>
       <td>{{candy.price}}</td>
       <td><button ng-click="deleteCandy(candy)">Delete Candy</button></td>
+      <td><button ng-click="updateCandy(candy,updatedName, updatedExpiry, updatedPrice)">Edit Candy</button></td>
     </tr>
   </table>
   <div ng-repeat="error in errors">{{error}}</div>
@@ -36,6 +38,16 @@
     Price: <input ng-model="newPrice">
   </div>
   <button ng-click="addCandy(newName, newExpiry, newPrice)">Add Candy</button>
+  <div>
+    <p>Enter information to update</p>
+    Name: <input ng-model="updatedName">
+  </div>
+  <div>
+    Expiry: <input ng-model="updatedExpiry">
+  </div>
+  <div>
+    Price: <input ng-model="updatedPrice">
+  </div>
+  <div> Total number of candies {{candies.length}}</div>
 </div>
-<div> Total number of candies {{candies.length}}</div>
 </div>

@@ -35,6 +35,15 @@
       });
     }
 
+    $scope.updateCandy = function(candy,updatedName,updatedExpiry,updatedPrice) {
+      candy.name = updatedName,
+      candy.expiry = updatedExpiry,
+      candy.price = updatedPrice
+      $http.patch("/api/v1/candies/" + candy.id + '.json', candy).then(function(response) {
+        console.log(candy);
+      });
+  }
+
     $scope.toggleByAttribute = function(attribute) {
       if(attribute == $scope.orderAttribute) {
         $scope.descending = !$scope.descending
